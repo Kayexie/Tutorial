@@ -1,1 +1,70 @@
-<button type="button" class="btn btn-warning">Sign Up</button>
+<button type="button" class="btn btn-warning" (click)="showDialog()">Sign Up</button>
+<p-dialog header="Sign Up" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary block mb-5">Please input your information.</span>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="flex align-items-center gap-3 mb-3">
+            <label for="userName" class="font-semibold w-6rem">UserName</label>
+            <input pInputText id="userName" formControlName="userName" class="flex-auto" autocomplete="off" />
+            <div>
+                @if(signUpForm.controls['userName'].touched){
+                    @if(signUpForm.controls['userName'].errors?.['required']){
+                        <span>Username required</span>
+                    }
+                    @if(signUpForm.controls['userName'].errors?.['minlength']){
+                        <span>At least 5 characters</span>
+                    }
+                }
+                <!-- <span *ngIf="signUpForm.controls['userName'].touched && signUpForm.controls['userName'].errors?.['required']">
+                    Username required</span>
+                <span *ngIf="signUpForm.controls['userName'].touched && signUpForm.controls['userName'].errors?.['minLength']">
+                    At least 5 characters</span> -->
+            </div>
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="email" class="font-semibold w-6rem">Email</label>
+            <input pInputText id="email" formControlName="email" class="flex-auto" autocomplete="off" />
+            <div>
+                @if(signUpForm.controls['email'].touched && signUpForm.controls['email'].errors?.['required']){
+                    <span>Email required</span>
+                }
+                @if(signUpForm.controls['email'].touched && signUpForm.controls['email'].errors?.['email']){
+                    <span>Please input a valid email</span>
+                }
+            </div>
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="password" class="font-semibold w-6rem">Password</label>
+
+            <input [type]="showPassword? 'text' : 'password'" pInputText id="password" formControlName="password" class="flex-auto" autocomplete="off" />
+            <button (click)="toggleShow()">Show Password</button>
+            <div>
+                <span *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors?.['required']">
+                    Password required
+                </span>
+                <span *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors?.['minlength']">
+                    At least 8 characters
+                </span>
+                <span *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors?.['pattern']">
+                    Please include uppercase, lowercase, symbol and numbers
+                </span>
+            </div>
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="confirmPassword" class="font-semibold w-6rem">Confirm Password</label>
+            <input [type]="showPassword? 'text': 'password'" pInputText id="confirmPassword" formControlName="confirmPassword" class="flex-auto" autocomplete="off" />
+            <button (click)="toggleShow()">Show Password</button>
+            <div>
+                <span *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.controls['confirmPassword'].errors?.['required']">
+                    Confirmpassword required
+                </span>
+                <span *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.errors?.['notMatch']">
+                    Password not match</span>
+            </div>
+        </div>
+
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+            <p-button label="Save" type="submit" [disabled]="signUpForm.invalid" (onClick)="visible = false" />
+        </div>
+    </form>
+</p-dialog>
