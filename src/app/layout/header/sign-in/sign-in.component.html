@@ -1,16 +1,39 @@
 <button type="button" class="btn btn-success" (click)="showDialog()">Sign In</button>
 <p-dialog header="Sign In" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <span class="p-text-secondary block mb-5">Please input your information.</span>
-    <div class="flex align-items-center gap-3 mb-3">
-        <label for="username" class="font-semibold w-6rem">Email</label>
-        <input pInputText id="username" class="flex-auto" autocomplete="off" />
-    </div>
-    <div class="flex align-items-center gap-3 mb-5">
-        <label for="email" class="font-semibold w-6rem">Password</label>
-        <input pInputText id="email" class="flex-auto" autocomplete="off" />
-    </div>
-    <div class="flex justify-content-end gap-2">
-        <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
-        <p-button label="Save" (onClick)="visible = false" />
-    </div>
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <div class="flex align-items-center gap-3 mb-3">
+            <label for="email" class="font-semibold w-6rem">Email</label>
+            <input pInputText id="email" formControlName="email" class="flex-auto" autocomplete="off" />
+            <div>
+                <span *ngIf="signInForm.controls['email'].touched && signInForm.controls['email'].errors?.['required']">
+                    Email required
+                </span>
+                <span *ngIf="signInForm.controls['email'].touched && signInForm.controls['email'].errors?.['email']">
+                    Please input a valid email address
+                </span>
+            </div>
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="password" class="font-semibold w-6rem">Password</label>
+            <input [type]="showPassword? 'text' : 'password' " pInputText id="password" formControlName="password" class="flex-auto" autocomplete="off" />
+            <button (click)="toggleShow()">Show password</button>
+            <div>
+                <span *ngIf="signInForm.controls['password'].touched && signInForm.controls['password'].errors?.['required']">
+                    Password required
+                </span>
+                <span *ngIf="signInForm.controls['password'].touched && signInForm.controls['password'].errors?.['minlength']">
+                    At least 8 characters
+                </span>
+                <span *ngIf="signInForm.controls['password'].touched && signInForm.controls['password'].errors?.['pattern']">
+                    Symbols, numbers, letters must be included.
+                </span>
+            </div>
+        </div>
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+            <p-button type="submit" label="Save" [disabled]="signInForm.invalid"  (onClick)="visible = false" />
+        </div>
+    </form>
+
 </p-dialog>
