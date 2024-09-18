@@ -11,7 +11,6 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [DialogModule, ButtonModule, InputTextModule, ReactiveFormsModule, NgIf],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
 

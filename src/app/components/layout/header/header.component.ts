@@ -11,7 +11,6 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
         SignUpComponent
     ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
 })
 export class HeaderComponent {
 

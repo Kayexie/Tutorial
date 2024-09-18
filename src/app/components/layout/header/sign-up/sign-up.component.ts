@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {Button} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
 import {InputTextModule} from "primeng/inputtext";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import { NgIf } from '@angular/common';
+import {UserService} from "../../../../services/user/user.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,12 +17,12 @@ import { NgIf } from '@angular/common';
         NgIf
     ],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
 
     visible: boolean = false;
     showPassword: boolean = false;
+    userService = inject(UserService)
 
     passwordMatchValidator(control: AbstractControl){
 
@@ -54,7 +55,11 @@ export class SignUpComponent {
     }
 
     onSubmit(){
-        console.log(this.signUpForm.value);
+        const formValue = this.signUpForm.value
+        console.log("this is the sign up form value", formValue)
+        this.userService.createNewUser(formValue).subscribe((res => {
+            console.log('result', res)
+        }))
     }
 
     toggleShow(){
