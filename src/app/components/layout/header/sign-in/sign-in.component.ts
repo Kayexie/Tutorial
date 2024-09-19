@@ -6,6 +6,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../../services/user/user.service";
+import {AuthTokenService} from "../../../../services/authToken/auth-token.service";
 
 
 @Component({
@@ -16,10 +17,12 @@ import {UserService} from "../../../../services/user/user.service";
 })
 export class SignInComponent {
 
-  visible: boolean = false;
-  showPassword = false;
   http = inject(HttpClient)
   userService = inject(UserService)
+  authService = inject(AuthTokenService)
+
+  visible: boolean = false;
+  showPassword = false;
   error = ''
 
   signInForm = new FormGroup({
@@ -46,11 +49,13 @@ export class SignInComponent {
       next: res => {
         this.visible = false;
         this.signInForm.reset()
+        this.authService.setToken(res.token)
       },
       error: err => {
         this.error = err.error.error
       }
     })
+
   }
 
   closeDialog(){
