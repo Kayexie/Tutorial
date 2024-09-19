@@ -23,6 +23,7 @@ export class SignUpComponent {
     visible: boolean = false;
     showPassword: boolean = false;
     userService = inject(UserService)
+    error = ''
 
     passwordMatchValidator(control: AbstractControl){
 
@@ -56,15 +57,27 @@ export class SignUpComponent {
 
     onSubmit(){
         const formValue = this.signUpForm.value
-        console.log("this is the sign up form value", formValue)
-        this.userService.createNewUser(formValue).subscribe((res => {
-            console.log('result', res)
-        }))
+        this.error = ''
+        this.userService.createNewUser(formValue).subscribe({
+            next: res => {
+                this.signUpForm.reset()
+                this.visible = false
+
+            },
+            error: err => {
+                this.error = err.error.error
+            }
+        })
+    }
+
+    closeDialog(){
+        this.error=''
+        this.visible = false
+        this.signUpForm.reset()
     }
 
     toggleShow(){
         this.showPassword = !this.showPassword
-        console.log('this.showpassword', this.showPassword);
         
     }
 }

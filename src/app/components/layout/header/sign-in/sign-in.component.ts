@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import {ButtonModule} from "primeng/button";
 import { InputTextModule } from 'primeng/inputtext';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
+import {HttpClient} from "@angular/common/http";
+import {UserService} from "../../../../services/user/user.service";
 
 
 @Component({
@@ -16,10 +18,13 @@ export class SignInComponent {
 
   visible: boolean = false;
   showPassword = false;
+  http = inject(HttpClient)
+  userService = inject(UserService)
+  error = ''
 
   signInForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('',[
+    password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
       Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
@@ -30,12 +35,27 @@ export class SignInComponent {
     this.visible = true;
   }
 
-  toggleShow(){
+  toggleShow() {
     this.showPassword = !this.showPassword
   }
 
-  onSubmit(){
-    console.log("this.sign in form value", this.signInForm.value)
+  onSubmit() {
+    const formValue = this.signInForm.value
+    this.error = ''
+    this.userService.signIn(formValue).subscribe({
+      next: res => {
+        this.visible = false;
+        this.signInForm.reset()
+      },
+      error: err => {
+        this.error = err.error.error
+      }
+    })
   }
 
+  closeDialog(){
+    this.error=''
+    this.signInForm.reset()
+    this.visible = false;
+  }
 }
