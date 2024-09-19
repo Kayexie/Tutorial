@@ -4,7 +4,6 @@ import {
   Injectable,
   Input,
   NgModule,
-  Subject,
   TemplateRef,
   setClassMetadata,
   signal,
@@ -17,7 +16,10 @@ import {
   ɵɵdirectiveInject,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-PI3MS2S4.js";
+} from "./chunk-7YCY3AB6.js";
+import {
+  Subject
+} from "./chunk-FDESMX7I.js";
 import {
   __spreadValues
 } from "./chunk-TXDUYLVM.js";
@@ -1049,4 +1051,4 @@ export {
   SharedModule,
   TranslationKeys
 };
-//# sourceMappingURL=chunk-WQ55POIY.js.map
+//# sourceMappingURL=chunk-WRIZNUQW.js.map

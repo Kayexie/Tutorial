@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-warning" (click)="showDialog()">Sign Up</button>
-<p-dialog header="Sign Up" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+<p-dialog header="Sign Up" [modal]="true" [(visible)]="visible" (onHide)="closeDialog()" [style]="{ width: '25rem' }">
     <span class="p-text-secondary block mb-5">Please input your information.</span>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <div class="flex align-items-center gap-3 mb-3">
@@ -14,10 +14,6 @@
                         <span>At least 5 characters</span>
                     }
                 }
-                <!-- <span *ngIf="signUpForm.controls['userName'].touched && signUpForm.controls['userName'].errors?.['required']">
-                    Username required</span>
-                <span *ngIf="signUpForm.controls['userName'].touched && signUpForm.controls['userName'].errors?.['minLength']">
-                    At least 5 characters</span> -->
             </div>
         </div>
         <div class="flex align-items-center gap-3 mb-5">
@@ -36,7 +32,7 @@
             <label for="password" class="font-semibold w-6rem">Password</label>
 
             <input [type]="showPassword? 'text' : 'password'" pInputText id="password" formControlName="password" class="flex-auto" autocomplete="off" />
-            <button (click)="toggleShow()">Show Password</button>
+            <button type="button" (click)="toggleShow()">Show Password</button>
             <div>
                 <span *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors?.['required']">
                     Password required
@@ -53,7 +49,7 @@
         <div class="flex align-items-center gap-3 mb-5">
             <label for="confirmPassword" class="font-semibold w-6rem">Confirm Password</label>
             <input [type]="showPassword? 'text': 'password'" pInputText id="confirmPassword" formControlName="confirmPassword" class="flex-auto" autocomplete="off" />
-            <button (click)="toggleShow()">Show Password</button>
+            <button type="button" (click)="toggleShow()">Show Password</button>
             <div>
                 <span *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.controls['confirmPassword'].errors?.['required']">
                     Confirmpassword required
@@ -62,10 +58,10 @@
                     Password not match</span>
             </div>
         </div>
-
+        <span *ngIf="error">{{error}}</span>
         <div class="flex justify-content-end gap-2">
-            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
-            <p-button label="Save" type="submit" [disabled]="signUpForm.invalid" (onClick)="visible = false" />
+            <p-button label="Cancel" severity="secondary" (onClick)="closeDialog()" />
+            <p-button label="Save" type="submit" [disabled]="signUpForm.invalid"/>
         </div>
     </form>
 </p-dialog>

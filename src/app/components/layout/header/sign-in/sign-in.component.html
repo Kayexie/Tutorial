@@ -1,5 +1,6 @@
 <button type="button" class="btn btn-success" (click)="showDialog()">Sign In</button>
-<p-dialog header="Sign In" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+<p-dialog header="Sign In" [modal]="true" [(visible)]="visible" (onHide)="closeDialog()" [style]="{ width: '25rem' }">
+
     <span class="p-text-secondary block mb-5">Please input your information.</span>
     <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
         <div class="flex align-items-center gap-3 mb-3">
@@ -17,7 +18,7 @@
         <div class="flex align-items-center gap-3 mb-5">
             <label for="password" class="font-semibold w-6rem">Password</label>
             <input [type]="showPassword? 'text' : 'password' " pInputText id="password" formControlName="password" class="flex-auto" autocomplete="off" />
-            <button (click)="toggleShow()">Show password</button>
+            <button type="button" (click)="toggleShow()">Show password</button>
             <div>
                 <span *ngIf="signInForm.controls['password'].touched && signInForm.controls['password'].errors?.['required']">
                     Password required
@@ -30,9 +31,10 @@
                 </span>
             </div>
         </div>
+        <span *ngIf="error" class="p-text-secondary block mb-5">{{error}}</span>
         <div class="flex justify-content-end gap-2">
-            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
-            <p-button type="submit" label="Save" [disabled]="signInForm.invalid"  (onClick)="visible = false" />
+            <p-button label="Cancel" severity="secondary" (onClick)="closeDialog()" />
+            <p-button type="submit" label="Save" [disabled]="signInForm.invalid" />
         </div>
     </form>
 

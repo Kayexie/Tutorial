@@ -4,7 +4,7 @@ import {
   PrimeTemplate,
   SharedModule,
   UniqueComponentId
-} from "./chunk-WQ55POIY.js";
+} from "./chunk-WRIZNUQW.js";
 import {
   DOCUMENT,
   NgClass,
@@ -12,7 +12,7 @@ import {
   NgStyle,
   NgTemplateOutlet,
   isPlatformBrowser
-} from "./chunk-M6L3USYS.js";
+} from "./chunk-KQ6DUZ46.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -65,7 +65,7 @@ import {
   ɵɵtemplate,
   ɵɵtext,
   ɵɵtextInterpolate
-} from "./chunk-PI3MS2S4.js";
+} from "./chunk-7YCY3AB6.js";
 
 // node_modules/primeng/fesm2022/primeng-dom.mjs
 var DomHandler = class _DomHandler {
@@ -2072,4 +2072,4 @@ export {
   Button,
   ButtonModule
 };
-//# sourceMappingURL=chunk-YDZI3AQZ.js.map
+//# sourceMappingURL=chunk-QDXFXN3Y.js.map
