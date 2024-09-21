@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit{
     ngOnInit() {
         this.authServer.getToken().subscribe( token => {
             this.token = token
-            console.log("this is the token initialization", token)
         })
     }
 }

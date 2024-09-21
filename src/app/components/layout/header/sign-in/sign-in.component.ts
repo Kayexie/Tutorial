@@ -46,10 +46,21 @@ export class SignInComponent {
     const formValue = this.signInForm.value
     this.error = ''
     this.userService.signIn(formValue).subscribe({
+
       next: res => {
         this.visible = false;
         this.signInForm.reset()
         this.authService.setToken(res.token)
+
+        const expireTime = JSON.parse(atob(res.token.split('.')[1])).exp*1000
+        const currentTime = Date.now()
+        const expIn = expireTime - currentTime
+
+        if(expIn > 0){
+          this.authService.autoRemoveToken(expIn)
+        } else {
+          this.authService.removeToken()
+        }
       },
       error: err => {
         this.error = err.error.error
