@@ -12,6 +12,7 @@ export class AuthTokenService {
   constructor() {
     //当页面首次加载的时候，检查session里面是否有token，有的话就拿过来
     const storedToken = sessionStorage.getItem('authToken');
+    //计算过期的时间
     if (storedToken) {
       this.token.next(storedToken);  // 初始化时将 sessionStorage 的 token 存储到 BehaviorSubject 中
     }
@@ -30,4 +31,11 @@ export class AuthTokenService {
     sessionStorage.setItem('authToken', token)
     this.token.next(token)
   }
+
+  autoRemoveToken(expIn: number){
+    setTimeout(() => {
+      this.removeToken()
+    }, expIn)
+  }
+
 }
