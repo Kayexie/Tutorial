@@ -5,6 +5,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import { NgIf } from '@angular/common';
 import {UserService} from "../../../../services/user/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -24,6 +25,7 @@ export class SignUpComponent {
     showPassword: boolean = false;
     userService = inject(UserService)
     error = ''
+    router = inject(Router)
 
     passwordMatchValidator(control: AbstractControl){
 
@@ -52,6 +54,7 @@ export class SignUpComponent {
     })
 
     showDialog() {
+        this.router.navigate(['/signUp'])
         this.visible = true;
     }
 
@@ -74,6 +77,7 @@ export class SignUpComponent {
         this.error=''
         this.visible = false
         this.signUpForm.reset()
+        this.router.navigate([''])
     }
 
     toggleShow(){

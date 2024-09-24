@@ -1,0 +1,40 @@
+<div class="form-container" style="height:100%; flex-direction:column; display:flex;margin-left: 5rem; margin-top: 5rem">
+    <form class="example-form" (ngSubmit)="updateInfo()">
+        <h3> Hello {{userObject.userName}}</h3>
+        <mat-form-field class="example-full-width">
+            <mat-label>UserId:</mat-label>
+            <input matInput disabled [value]="userObject.userId">
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>User Name</mat-label>
+                <input matInput [(ngModel)]="userObject.userName" name="userName">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="userObject.email" name="email">
+            </mat-form-field></td>
+        </tr></table>
+
+        <p>
+            <mat-form-field class="example-full-width">
+                <mat-label>Role:</mat-label>
+                <input matInput disabled [ngModel]="userObject.role" name="role">
+            </mat-form-field>
+        </p>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>CreatedAt:</mat-label>
+                <input matInput disabled [value]="userObject.createdAt | date: 'yyyy-MM-dd'" name="createdAt">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>UpdatedAt:</mat-label>
+                <input matInput disabled [value]="userObject.updatedAt | date: 'yyy-MM-dd'" name="updatedAt">
+            </mat-form-field></td>
+        </tr></table>
+        <button mat-flat-button type="submit">Update</button>
+    </form>
+</div>
+
