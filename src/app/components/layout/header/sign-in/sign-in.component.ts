@@ -7,6 +7,7 @@ import {NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../../services/user/user.service";
 import {AuthTokenService} from "../../../../services/authToken/auth-token.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -20,6 +21,7 @@ export class SignInComponent {
   http = inject(HttpClient)
   userService = inject(UserService)
   authService = inject(AuthTokenService)
+  router = inject(Router)
 
   visible: boolean = false;
   showPassword = false;
@@ -36,6 +38,7 @@ export class SignInComponent {
 
   showDialog() {
     this.visible = true;
+    this.router.navigate(['/signIn'])
   }
 
   toggleShow() {
@@ -43,6 +46,7 @@ export class SignInComponent {
   }
 
   onSubmit() {
+
     const formValue = this.signInForm.value
     this.error = ''
     this.userService.signIn(formValue).subscribe({
@@ -73,5 +77,6 @@ export class SignInComponent {
     this.error=''
     this.signInForm.reset()
     this.visible = false;
+    this.router.navigate([''])
   }
 }

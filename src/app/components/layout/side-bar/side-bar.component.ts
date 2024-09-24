@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './side-bar.component.html',
 })
 export class SideBarComponent {
-
-
-
 }

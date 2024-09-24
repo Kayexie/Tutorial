@@ -4,6 +4,7 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {SignOutComponent} from "./sign-out/sign-out.component";
 import {AuthTokenService} from "../../../services/authToken/auth-token.service";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -14,7 +15,8 @@ import {AuthTokenService} from "../../../services/authToken/auth-token.service";
         SignUpComponent,
         NgIf,
         SignOutComponent,
-        AsyncPipe
+        AsyncPipe,
+        RouterLink
     ],
   templateUrl: './header.component.html',
 })
