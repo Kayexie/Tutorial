@@ -4,7 +4,7 @@ export interface VimeoVideo {
     duration: number;
     cover: string;
     html: string;
-    created_time: string;
-    modified_time: string;
+    createdAt: string;
+    updatedAt: string;
     parentFolder: string | null;
 }

@@ -1,12 +1,8 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course/course.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {VimeoVideo} from "../../models/course";
-import {CourseCardComponent} from "./course-card/course-card.component";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {PrimeTemplate} from "primeng/api";
-import {TableModule} from "primeng/table";
-import {CdkListbox} from "@angular/cdk/listbox";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {PaginatorComponent} from "../public/paginator/paginator.component";
 
@@ -16,7 +12,8 @@ import {PaginatorComponent} from "../public/paginator/paginator.component";
   imports: [
     NgIf,
     NgForOf,
-    CourseCardComponent, MatProgressSpinnerModule, PrimeTemplate, TableModule, CdkListbox, PaginatorComponent
+    MatProgressSpinnerModule,
+    PaginatorComponent, DatePipe
   ],
   templateUrl: './all-courses.component.html',
 })
@@ -32,7 +29,6 @@ export class AllCoursesComponent implements OnInit{
 
   onSkipsChange(skips:number){
     this.recordSkips = skips
-
     this.getCourses()
   }
 
@@ -48,6 +44,7 @@ export class AllCoursesComponent implements OnInit{
           }
         })
         this.isLoading = false;
+        console.log("--------------", this.videoList )
       },
       error: err => {
         this.error = err.error.error

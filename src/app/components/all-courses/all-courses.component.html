@@ -5,8 +5,9 @@
         <table class="table table-borderless">
             <thead>
             <tr>
-                <th>Title</th>
-                <th></th>
+                <th>Video</th>
+                <th>Name</th>
+                <th>Duration</th>
                 <th>rating</th>
                 <th>Modified</th>
                 <th>Category</th>
@@ -16,12 +17,12 @@
             <tr>
                 <td>
                     <iframe [src]="video.html" style="width: 15rem"></iframe>
-<!--                    <a [href]="video.html"></a>-->
                 </td>
-                <td>{{video.name}}</td>
-                <td></td>
-                <td>{{video.modified_time}}</td>
-                <td>{{video.parentFolder}}</td>
+                <td class="align-middle">{{video.name}}</td>
+                <td class="align-middle">{{video.duration}}</td>
+                <td class="align-middle"></td>
+                <td class="align-middle">{{video.updatedAt | date: 'medium'}}</td>
+                <td class="align-middle">{{video.parentFolder}}</td>
             </tr>
             </tbody>
         </table>
