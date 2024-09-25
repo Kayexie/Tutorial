@@ -1,12 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {VimeoVideo} from "../../../models/course";
+import {PrimeTemplate} from "primeng/api";
 
 @Component({
   selector: 'app-course-card',
   standalone: true,
   imports: [
-      MatCardModule
+    MatCardModule,
+    PrimeTemplate
   ],
   templateUrl: './course-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,7 +10,7 @@ export class CourseService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCourses(): Observable<any>{
-   return this.http.get(`${environment.SERVER_URL}` + 'vimeo')
+  getAllCourses(pageSize:number, recordSkips:number): Observable<any>{
+   return this.http.get(`${environment.SERVER_URL}vimeo?pageSize=${pageSize}&skips=${recordSkips}`)
   }
 }

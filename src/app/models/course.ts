@@ -3,7 +3,8 @@ export interface VimeoVideo {
     name: string;
     duration: number;
     cover: string;
+    html: string;
     created_time: string;
     modified_time: string;
-    parent_folder: string | null;
+    parentFolder: string | null;
 }

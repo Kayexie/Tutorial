@@ -1,14 +1,36 @@
-<div class="form-container"
-     style="height:70vh;width:70vw;flex-direction:column; display:flex;margin:5rem">
-    <h4>All courses</h4>
-<!--    @for (video of videoList; track $index){-->
-<!--        <div>{{video.html}}</div>}-->
+<div style="height:70vh;width:70vw;margin-left: 4rem; margin-top: 1rem">
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <div *ngIf="!isLoading" style="display: flex;flex-wrap: wrap">
-
-        <div *ngFor="let video of videoList; let i = index">
-            <app-course-card [video]="video" />
-        </div>
+    <div *ngIf="!isLoading" class="container mt-3">
+        <h4>All courses</h4>
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th></th>
+                <th>rating</th>
+                <th>Modified</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let video of videoList; let i=index">
+            <tr>
+                <td>
+                    <iframe [src]="video.html" style="width: 15rem"></iframe>
+<!--                    <a [href]="video.html"></a>-->
+                </td>
+                <td>{{video.name}}</td>
+                <td></td>
+                <td>{{video.modified_time}}</td>
+                <td>{{video.parentFolder}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
+    <paginator-basic-demo
+            [totalRecords]="totalRecords"
+            [pageSize]="pageSize"
+            (pageEmitter)="onSkipsChange($event)"
+    />
 </div>
+
+
