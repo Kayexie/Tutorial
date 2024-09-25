@@ -1,12 +1,4 @@
 import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-  useAnimation
-} from "./chunk-6FFL5OFZ.js";
-import {
   BaseIcon,
   ButtonDirective,
   ButtonModule,
@@ -24,6 +16,14 @@ import {
   UniqueComponentId,
   zindexutils
 } from "./chunk-WRIZNUQW.js";
+import {
+  animate,
+  animation,
+  style,
+  transition,
+  trigger,
+  useAnimation
+} from "./chunk-6FFL5OFZ.js";
 import {
   CommonModule,
   DOCUMENT,

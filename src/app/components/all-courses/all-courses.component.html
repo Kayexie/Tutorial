@@ -1,0 +1,14 @@
+<div class="form-container"
+     style="height:70vh;width:70vw;flex-direction:column; display:flex;margin:5rem">
+    <h4>All courses</h4>
+<!--    @for (video of videoList; track $index){-->
+<!--        <div>{{video.html}}</div>}-->
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div *ngIf="!isLoading" style="display: flex;flex-wrap: wrap">
+
+        <div *ngFor="let video of videoList; let i = index">
+            <app-course-card [video]="video" />
+        </div>
+    </div>
+
+</div>

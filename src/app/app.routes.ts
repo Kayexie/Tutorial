@@ -3,7 +3,7 @@ import {UserProfileComponent} from "./components/user-profile/user-profile.compo
 import {SignInComponent} from "./components/layout/header/sign-in/sign-in.component";
 import {SignUpComponent} from "./components/layout/header/sign-up/sign-up.component";
 import {authGuard} from "./guard/auth.guard";
-
+import {AllCoursesComponent} from "./components/all-courses/all-courses.component";
 
 export const routes: Routes = [
     {
@@ -24,4 +24,9 @@ export const routes: Routes = [
         component: UserProfileComponent,
         canActivate: [authGuard]
     },
+    {
+        path:'all-courses',
+        component: AllCoursesComponent,
+        canActivate:[authGuard]
+    }
 ];

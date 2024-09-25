@@ -1,9 +1,9 @@
 import {
-  NgModel
-} from "./chunk-TKJVNUN7.js";
-import {
   PrimeNGConfig
 } from "./chunk-WRIZNUQW.js";
+import {
+  NgModel
+} from "./chunk-TKJVNUN7.js";
 import {
   CommonModule
 } from "./chunk-KQ6DUZ46.js";
