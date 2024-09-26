@@ -1,7 +1,4 @@
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-T2VU3WG2.js";
-import {
   A,
   ActiveDescendantKeyManager,
   DOWN_ARROW,
@@ -17,6 +14,9 @@ import {
   coerceArray,
   hasModifierKey
 } from "./chunk-XLLPJRZM.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-T2VU3WG2.js";
 import "./chunk-GJS5VH6J.js";
 import {
   ChangeDetectorRef,

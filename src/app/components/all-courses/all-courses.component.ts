@@ -5,6 +5,7 @@ import {VimeoVideo} from "../../models/course";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {PaginatorComponent} from "../public/paginator/paginator.component";
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-all-courses',
@@ -13,7 +14,7 @@ import {PaginatorComponent} from "../public/paginator/paginator.component";
     NgIf,
     NgForOf,
     MatProgressSpinnerModule,
-    PaginatorComponent, DatePipe
+    PaginatorComponent, DatePipe, DividerModule
   ],
   templateUrl: './all-courses.component.html',
 })

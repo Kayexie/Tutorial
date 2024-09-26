@@ -26,7 +26,8 @@ export const routes: Routes = [
     },
     {
         path:'all-courses',
-        component: AllCoursesComponent,
+        loadComponent: () => import('./components/all-courses/all-courses.component')
+            .then(m => m.AllCoursesComponent),
         canActivate:[authGuard]
     }
 ];

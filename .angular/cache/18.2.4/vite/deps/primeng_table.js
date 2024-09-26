@@ -9,7 +9,7 @@ import {
   PaginatorModule,
   Scroller,
   ScrollerModule
-} from "./chunk-73TEOK6U.js";
+} from "./chunk-YGQKWUER.js";
 import {
   InputText,
   InputTextModule
@@ -47,18 +47,18 @@ import {
 } from "./chunk-226Q2MKZ.js";
 import "./chunk-H6EDEKS7.js";
 import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControlStatus,
-  NgModel
-} from "./chunk-T2VU3WG2.js";
-import {
   animate,
   state,
   style,
   transition,
   trigger
 } from "./chunk-72DR32WA.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControlStatus,
+  NgModel
+} from "./chunk-T2VU3WG2.js";
 import {
   CommonModule,
   DOCUMENT,

@@ -1,28 +1,27 @@
 <div style="height:70vh;width:70vw;margin-left: 4rem; margin-top: 1rem">
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <div *ngIf="!isLoading" class="container mt-3">
-        <h4>All courses</h4>
-        <table class="table table-borderless">
+        <h5>All courses</h5>
+        <table class="table">
             <thead>
             <tr>
                 <th>Video</th>
-                <th>Name</th>
-                <th>Duration</th>
-                <th>rating</th>
-                <th>Modified</th>
-                <th>Category</th>
+                <th class="align-middle text-center">Name</th>
+                <th class="align-middle text-center">Duration</th>
+                <th class="align-middle text-center">rating</th>
+                <th class="align-middle text-center">Modified</th>
+                <th class="align-middle text-center">Category</th>
             </tr>
             </thead>
             <tbody *ngFor="let video of videoList; let i=index">
             <tr>
                 <td>
-                    <iframe [src]="video.html" style="width: 15rem"></iframe>
-                </td>
-                <td class="align-middle">{{video.name}}</td>
-                <td class="align-middle">{{video.duration}}</td>
-                <td class="align-middle"></td>
-                <td class="align-middle">{{video.updatedAt | date: 'medium'}}</td>
-                <td class="align-middle">{{video.parentFolder}}</td>
+                    <iframe [src]="video.html" style="width: 15rem"></iframe></td>
+                <td class="align-middle text-center">{{video.name}}</td>
+                <td class="align-middle text-center">{{video.duration}}</td>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-center">{{video.updatedAt | date: 'medium'}}</td>
+                <td class="align-middle text-center">{{video.parentFolder}}</td>
             </tr>
             </tbody>
         </table>

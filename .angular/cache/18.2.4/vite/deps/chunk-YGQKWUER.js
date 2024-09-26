@@ -29,13 +29,6 @@ import {
   zindexutils
 } from "./chunk-226Q2MKZ.js";
 import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-  NgControlStatus,
-  NgModel
-} from "./chunk-T2VU3WG2.js";
-import {
   animate,
   animation,
   style,
@@ -43,6 +36,13 @@ import {
   trigger,
   useAnimation
 } from "./chunk-72DR32WA.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  NgControlStatus,
+  NgModel
+} from "./chunk-T2VU3WG2.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -10097,4 +10097,4 @@ export {
   Paginator,
   PaginatorModule
 };
-//# sourceMappingURL=chunk-73TEOK6U.js.map
+//# sourceMappingURL=chunk-YGQKWUER.js.map
